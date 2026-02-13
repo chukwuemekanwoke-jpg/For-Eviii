@@ -64,23 +64,20 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
 <body class="text-slate-900">
     <div id="root"></div>
     
-    <!-- Royal Error Catcher: Shows a helpful message if the app fails to load -->
+    <!-- Royal Error Catcher -->
     <div id="error-overlay" class="paper-texture">
         <div class="gold-border p-8 max-w-lg">
             <h1 class="font-cursive text-4xl mb-4">A Scandalous Error!</h1>
-            <p class="font-serif italic mb-6">It seems the printer has run out of ink, or perhaps the carriage has lost a wheel. The application could not load.</p>
+            <p class="font-serif italic mb-6">It seems the printer has run out of ink, or perhaps the carriage has lost a wheel.</p>
             <div id="error-message" class="text-xs bg-red-100 p-4 font-mono text-red-800 break-words mb-6"></div>
-            <p class="text-sm font-serif">Ensure you are running <code class="bg-slate-200 px-1">npm run dev</code> and not just opening the HTML file!</p>
         </div>
     </div>
 
     <script>
-        // Catch startup errors
         window.onerror = function(msg, url, lineNo, columnNo, error) {
             const overlay = document.getElementById('error-overlay');
             if (overlay) {
@@ -91,8 +88,6 @@
             return false;
         };
     </script>
-
-    <script type="module" src="./index.tsx"></script>
-<script type="module" src="/index.tsx"></script>
+    <script type="module" src="/index.tsx"></script>
 </body>
 </html>
