@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#A7C7E7">
+    <meta name="description" content="A Royal Request for Miss Eviii ❤️">
+    <title>A Match for Eviii | Lady Whistledown's Papers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Great+Vibes&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'EB Garamond', serif;
+            background-color: #fdf5e6;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .font-serif-bold { font-family: 'Playfair Display', serif; font-weight: 700; }
+        .font-cursive { font-family: 'Great Vibes', cursive; }
+        .paper-texture {
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+            background-color: #fdf5e6;
+        }
+        .gold-border { border: 4px double #D4AF37; }
+        .wax-seal {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3), inset 0 0 15px rgba(0,0,0,0.2);
+            background: radial-gradient(circle at 30% 30%, #c1272d, #8b0000);
+            border: 2px solid #7a0000;
+        }
+        @keyframes float-petal {
+            0% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        .petal {
+            position: absolute;
+            bottom: -50px;
+            pointer-events: none;
+            animation: float-petal linear forwards;
+        }
+        #error-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: #fdf5e6;
+            z-index: 9999;
+            padding: 2rem;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.41.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.4"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="text-slate-900">
+    <div id="root"></div>
+    
+    <!-- Royal Error Catcher: Shows a helpful message if the app fails to load -->
+    <div id="error-overlay" class="paper-texture">
+        <div class="gold-border p-8 max-w-lg">
+            <h1 class="font-cursive text-4xl mb-4">A Scandalous Error!</h1>
+            <p class="font-serif italic mb-6">It seems the printer has run out of ink, or perhaps the carriage has lost a wheel. The application could not load.</p>
+            <div id="error-message" class="text-xs bg-red-100 p-4 font-mono text-red-800 break-words mb-6"></div>
+            <p class="text-sm font-serif">Ensure you are running <code class="bg-slate-200 px-1">npm run dev</code> and not just opening the HTML file!</p>
+        </div>
+    </div>
+
+    <script>
+        // Catch startup errors
+        window.onerror = function(msg, url, lineNo, columnNo, error) {
+            const overlay = document.getElementById('error-overlay');
+            if (overlay) {
+              const message = document.getElementById('error-message');
+              overlay.style.display = 'flex';
+              message.innerText = msg + '\n at ' + url + ':' + lineNo;
+            }
+            return false;
+        };
+    </script>
+
+    <script type="module" src="./index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
